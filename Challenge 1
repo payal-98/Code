@@ -1,0 +1,25 @@
+
+//Function definition which return the closest sum to a given no. 
+int closest_sum(vector<int> &height,int  X)
+{
+	sort(height.begin(),height.end());
+	int sum=0,closest=INT_MAX,i,j,k;
+	for(i=0;i<height.size()-2;i++)
+	{
+		j=i+1;
+		k=height.size()-1;
+		while(j<k)
+		{
+		  sum=height[i]+height[j]+height[k];
+		  if((abs(sum-X)) < (abs(closest-X)))
+		  {
+		  	closest=sum;
+		  }
+		  if(sum>X)
+		    k--;
+		  else
+		    j++;
+		}
+	}
+	return closest;
+}
